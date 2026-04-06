@@ -10,32 +10,26 @@
 </head>
 <body>
 
-<%-- JSP Comment: Chỉ tồn tại ở phía Server, an toàn hơn HTML Comment --%>
-<%-- Title được lấy trực tiếp từ model.addAttribute("reportTitle", ...) --%>
 <h1><c:out value="${reportTitle}" /></h1>
 
-<table border="1" cellpadding="8">
+<table class="table table-bordered striped">
     <thead>
-    <tr>
-        <th>STT</th>
-        <th>Họ tên</th>
-        <th>Điểm</th>
-        <th>Xếp loại</th>
-    </tr>
+        <tr>
+            <th>STT</th>
+            <th>Họ tên</th>
+            <th>Điểm</th>
+            <th>Xếp loại</th>
+        </tr>
     </thead>
     <tbody>
-    <%-- Duyệt danh sách studentList bằng JSTL --%>
+
     <c:forEach items="${studentList}" var="sv" varStatus="loop">
         <tr>
             <td>${loop.count}</td>
-
-                <%-- Dùng c:out để chống tấn công XSS --%>
             <td><c:out value="${sv.fullName}" /></td>
-
             <td>${sv.score}</td>
 
             <td>
-                    <%-- Thay thế logic if-else Java bằng c:choose --%>
                 <c:choose>
                     <c:when test="${sv.score >= 90}">
                         <span class="rank-excellent">Xuất sắc</span>
