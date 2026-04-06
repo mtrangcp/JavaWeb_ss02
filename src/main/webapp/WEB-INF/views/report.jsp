@@ -8,11 +8,11 @@
         .rank-poor { color: red; }
     </style>
 </head>
-<body>
+<body class="container">
 
 <h1><c:out value="${reportTitle}" /></h1>
 
-<table class="table table-bordered striped">
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>STT</th>
@@ -23,10 +23,10 @@
     </thead>
     <tbody>
 
-    <c:forEach items="${studentList}" var="sv" varStatus="loop">
+    <c:forEach  var="sv" items="${studentList}"  varStatus="loop">
         <tr>
             <td>${loop.count}</td>
-            <td><c:out value="${sv.fullName}" /></td>
+            <td><c:out value="${sv.name}" /></td>
             <td>${sv.score}</td>
 
             <td>
